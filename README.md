@@ -10,7 +10,7 @@ EventAnnouncements is a plugin for the game SCP: SL using the Exiled framework. 
 ## Default config:
 
 
-```csharp
+```yaml
 
 event_announcements:
 
