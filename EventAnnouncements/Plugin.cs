@@ -1,30 +1,21 @@
-﻿using EventAnnouncements.Events;
+﻿using EventAnnouncements.API;
 using Exiled.API.Features;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EventAnnouncements
 {
     public class Plugin : Plugin<Config>
     {
-        private ServerEvents _serverEvents;
-        private PlayerEvents _playerEvents;
-
         public static Plugin Instance;
 
-        public override string Name { get; } = "EventAnnouncements";
-        public override string Author { get; } = "Heisenberg3666";
-        public override Version Version { get; } = new Version(1, 0, 0, 0);
-        public override Version RequiredExiledVersion { get; } = new Version(5, 2, 2);
+        public override string Name => "EventAnnouncements";
+        public override string Author => "Heisenberg3666";
+        public override Version Version => new Version(1, 0, 0, 0);
+        public override Version RequiredExiledVersion => new Version(5, 2, 2);
 
         public override void OnEnabled()
         {
             Instance = this;
-            _serverEvents = new ServerEvents(Config.ServerAnnouncements);
-            _playerEvents = new PlayerEvents(Config.PlayerAnnouncements);
 
             RegisterEvents();
 
@@ -35,8 +26,6 @@ namespace EventAnnouncements
         {
             UnregisterEvents();
 
-            _playerEvents = null;
-            _serverEvents = null;
             Instance = null;
 
             base.OnDisabled();
@@ -44,14 +33,14 @@ namespace EventAnnouncements
 
         public void RegisterEvents()
         {
-            _serverEvents.RegisterEvents();
-            _playerEvents.RegisterEvents();
+            foreach (string eventName in Config.Announcements.Keys)
+                DynamicConnection.CreateConnection(eventName);
         }
 
         public void UnregisterEvents()
         {
-            _serverEvents.UnregisterEvents();
-            _playerEvents.UnregisterEvents();
+            foreach (string eventName in Config.Announcements.Keys)
+                DynamicConnection.DisconnectFromEvent(eventName);
         }
     }
 }

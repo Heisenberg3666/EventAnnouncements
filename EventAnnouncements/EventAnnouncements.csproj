@@ -98,13 +98,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API\DynamicConnection.cs" />
     <Compile Include="API\Entities\Announcement.cs" />
-    <Compile Include="API\Enums\PlayerEventType.cs" />
-    <Compile Include="API\Enums\ServerEventType.cs" />
     <Compile Include="API\Extensions.cs" />
     <Compile Include="Config.cs" />
-    <Compile Include="Events\PlayerEvents.cs" />
-    <Compile Include="Events\ServerEvents.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

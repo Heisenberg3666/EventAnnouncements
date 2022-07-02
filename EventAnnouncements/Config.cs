@@ -1,5 +1,4 @@
 ﻿using EventAnnouncements.API.Entities;
-using EventAnnouncements.API.Enums;
 using Exiled.API.Interfaces;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,10 +9,10 @@ namespace EventAnnouncements
     {
         public bool IsEnabled { get; set; } = true;
 
-        [Description("These are all the announcements that will be made for the server events.")]
-        public Dictionary<ServerEventType, Announcement> ServerAnnouncements { get; set; } = new Dictionary<ServerEventType, Announcement>()
+        [Description("These are all the announcements that will be made for each event assigned.")]
+        public Dictionary<string, Announcement> Announcements { get; set; } = new Dictionary<string, Announcement>()
         {
-            [ServerEventType.RoundStarted] = new Announcement()
+            ["RoundStarted"] = new Announcement()
             {
                 Cassie = "",
                 Subtitles = "",
@@ -21,20 +20,15 @@ namespace EventAnnouncements
                 Hint = "Have fun!",
                 DisplayTime = 5f
             },
-            [ServerEventType.RoundEnded] = new Announcement()
+            ["RoundEnded"] = new Announcement()
             {
                 Cassie = "",
                 Subtitles = "",
                 Broadcast = "The round has ended.",
                 Hint = "GG!",
                 DisplayTime = 5f
-            }
-        };
-
-        [Description("These are all the announcements that will be made for the player events.")]
-        public Dictionary<PlayerEventType, Announcement> PlayerAnnouncements { get; set; } = new Dictionary<PlayerEventType, Announcement>()
-        {
-            [PlayerEventType.ActivatingGenerator] = new Announcement()
+            },
+            ["ActivatingGenerator"] = new Announcement()
             {
                 Cassie = "",
                 Subtitles = "",
@@ -42,7 +36,7 @@ namespace EventAnnouncements
                 Hint = "",
                 DisplayTime = 5f
             },
-            [PlayerEventType.ActivatingWarheadPanel] = new Announcement()
+            ["RoundEnded"] = new Announcement()
             {
                 Cassie = "",
                 Subtitles = "",
