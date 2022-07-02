@@ -13,8 +13,8 @@ EventAnnouncements is a plugin for the game SCP: SL using the Exiled framework. 
 ```yaml
 event_announcements:
   is_enabled: true
-  # These are all the announcements that will be made for the server events.
-  server_announcements:
+  # These are all the announcements that will be made for each event assigned.
+  announcements:
     RoundStarted:
       cassie: ''
       subtitles: ''
@@ -27,8 +27,6 @@ event_announcements:
       broadcast: The round has ended.
       hint: GG!
       display_time: 5
-  # These are all the announcements that will be made for the player events.
-  player_announcements:
     ActivatingGenerator:
       cassie: ''
       subtitles: ''
@@ -39,6 +37,6 @@ event_announcements:
       cassie: ''
       subtitles: ''
       broadcast: ''
-      hint: A player has activated the warhead panel.
+      hint: A player has activated the warhead panel!
       display_time: 5
 ```
